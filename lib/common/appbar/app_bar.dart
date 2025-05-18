@@ -11,7 +11,7 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0,
       centerTitle: true,
-      title: title ?? Text(''),
+      title: title ?? const Text(''),
       leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -35,5 +35,5 @@ class BasicAppbar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size.fromHeight(kToolbarHeight);
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

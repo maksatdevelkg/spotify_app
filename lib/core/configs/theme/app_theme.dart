@@ -10,9 +10,9 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: Colors.transparent,
-          contentPadding: EdgeInsets.all(30),
+          contentPadding: const EdgeInsets.all(30),
           hintStyle:
-              TextStyle(color: Color(0xff383838), fontWeight: FontWeight.w500),
+              const TextStyle(color: Color(0xff383838), fontWeight: FontWeight.w500),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: const BorderSide(color: Colors.black, width: 0.4)),
@@ -20,7 +20,7 @@ class AppTheme {
               borderRadius: BorderRadius.circular(30),
               borderSide: const BorderSide(color: Colors.black, width: 0.4)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0xff288CE9), width: 0.4),
+              borderSide: const BorderSide(color: Color(0xff288CE9), width: 0.4),
               borderRadius: BorderRadius.circular(30))),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -39,8 +39,8 @@ class AppTheme {
           filled: true,
           fillColor: Colors.transparent,
           hintStyle:
-              TextStyle(color: Color(0xffA7A7A7), fontWeight: FontWeight.w500),
-          contentPadding: EdgeInsets.all(30),
+              const TextStyle(color: Color(0xffA7A7A7), fontWeight: FontWeight.w500),
+          contentPadding: const EdgeInsets.all(30),
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(30),
               borderSide: const BorderSide(color: Colors.white, width: 0.4)),
@@ -48,7 +48,7 @@ class AppTheme {
               borderRadius: BorderRadius.circular(30),
               borderSide: const BorderSide(color: Colors.white, width: 0.4)),
           focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Color(0xff288CE9), width: 0.4),
+              borderSide: const BorderSide(color: Color(0xff288CE9), width: 0.4),
               borderRadius: BorderRadius.circular(30))),
       elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(

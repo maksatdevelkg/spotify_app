@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotify_app/common/appbar/app_bar.dart';
 import 'package:spotify_app/common/widgets/button/basic_app_button.dart';
 import 'package:spotify_app/core/configs/assets/app_vectors.dart';
-import 'package:spotify_app/core/configs/theme/app_colors.dart';
+import 'package:spotify_app/presentation/auth/pages/register.dart';
 
 class Signin extends StatelessWidget {
   const Signin({super.key});
@@ -80,8 +80,13 @@ class Signin extends StatelessWidget {
             style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14),
           ),
           TextButton(
-              onPressed: () {},
-              child: Text(
+              onPressed: () {
+                Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const Register()),
+                          );
+              },
+              child: const Text(
                 'Register Now',
                 style: TextStyle(color: Color(0xff288CE9)),
               ))

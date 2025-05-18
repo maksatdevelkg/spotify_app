@@ -17,7 +17,7 @@ class RegisterOrSignin extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          BasicAppbar(),
+          const BasicAppbar(),
           Positioned(
             bottom: 0,
             left: 0,
@@ -32,7 +32,7 @@ class RegisterOrSignin extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 100),
             child: Column(
               children: [
-                Spacer(),
+                const Spacer(),
                 Center(child: SvgPicture.asset(AppVectors.logo)),
                 const SizedBox(
                   height: 55,
@@ -55,14 +55,14 @@ class RegisterOrSignin extends StatelessWidget {
                       fontSize: 19),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 Padding(
                   padding: const EdgeInsets.only(left: 20, right: 20),
                   child: Row(
                     children: [
-                      Container(
+                      SizedBox(
                         height: 80,
                         width: 160,
                         child: BasicAppButton(
@@ -75,14 +75,14 @@ class RegisterOrSignin extends StatelessWidget {
                             },
                             title: 'Register'),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 80,
                       ),
                       GestureDetector(
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Register()),
+                            MaterialPageRoute(builder: (context) => const Register()),
                           );
                         },
                         child: GestureDetector(
@@ -90,7 +90,7 @@ class RegisterOrSignin extends StatelessWidget {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => Signin()));
+                                    builder: (context) => const Signin()));
                           },
                           child: Text(
                             'Sign in',
@@ -106,7 +106,7 @@ class RegisterOrSignin extends StatelessWidget {
                     ],
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),

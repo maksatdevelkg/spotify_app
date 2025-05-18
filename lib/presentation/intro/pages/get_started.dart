@@ -30,7 +30,7 @@ class GetStartedPage extends StatelessWidget {
                 Align(
                     alignment: Alignment.topCenter,
                     child: SvgPicture.asset(AppVectors.logo)),
-                Spacer(),
+                const Spacer(),
                 const Text(
                   'Enjoy listening to music',
                   style: TextStyle(
