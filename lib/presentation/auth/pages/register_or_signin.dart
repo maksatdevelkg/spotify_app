@@ -71,7 +71,7 @@ class RegisterOrSignin extends StatelessWidget {
                                   context,
                                   MaterialPageRoute(
                                       builder: (BuildContext context) =>
-                                          const Register()));
+                                           Register()));
                             },
                             title: 'Register'),
                       ),
@@ -82,7 +82,7 @@ class RegisterOrSignin extends StatelessWidget {
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const Register()),
+                            MaterialPageRoute(builder: (context) =>  Register()),
                           );
                         },
                         child: GestureDetector(

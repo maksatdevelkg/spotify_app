@@ -3,11 +3,17 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotify_app/common/appbar/app_bar.dart';
 import 'package:spotify_app/common/widgets/button/basic_app_button.dart';
 import 'package:spotify_app/core/configs/assets/app_vectors.dart';
+import 'package:spotify_app/data/model/auth/create_user_req.dart';
+import 'package:spotify_app/domain/usecases/auth/signup.dart';
 import 'package:spotify_app/presentation/auth/pages/signin.dart';
+import 'package:spotify_app/service_locator.dart';
 
 class Register extends StatelessWidget {
-  const Register({super.key});
+   Register({super.key});
 
+final TextEditingController _fullName = TextEditingController();
+final TextEditingController _password = TextEditingController();
+final TextEditingController _email = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +55,12 @@ class Register extends StatelessWidget {
                   const SizedBox(
                     height: 30,
                   ),
-                  BasicAppButton(onPressed: () {}, title: 'Creat Account'),
+                  BasicAppButton(onPressed: () async {
+                    var result = await sl<SignupUseCase>().call(params: CreateUserReq(
+                      fullName: '', 
+                      email: '', 
+                      password: ''));
+                  }, title: 'Creat Account'),
                 ],
               ),
             ),
