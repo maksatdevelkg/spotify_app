@@ -6,14 +6,15 @@ import 'package:spotify_app/core/configs/assets/app_vectors.dart';
 import 'package:spotify_app/data/model/auth/create_user_req.dart';
 import 'package:spotify_app/domain/usecases/auth/signup.dart';
 import 'package:spotify_app/presentation/auth/pages/signin.dart';
+import 'package:spotify_app/presentation/home/home_page.dart';
 import 'package:spotify_app/service_locator.dart';
 
 class Register extends StatelessWidget {
-   Register({super.key});
+  Register({super.key});
 
-final TextEditingController _fullName = TextEditingController();
-final TextEditingController _password = TextEditingController();
-final TextEditingController _email = TextEditingController();
+  final TextEditingController _fullName = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+  final TextEditingController _email = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,12 +56,26 @@ final TextEditingController _email = TextEditingController();
                   const SizedBox(
                     height: 30,
                   ),
-                  BasicAppButton(onPressed: () async {
-                    var result = await sl<SignupUseCase>().call(params: CreateUserReq(
-                      fullName: '', 
-                      email: '', 
-                      password: ''));
-                  }, title: 'Creat Account'),
+                  BasicAppButton(
+                      onPressed: () async {
+                        var result = await sl<SignupUseCase>().call(
+                            params: CreateUserReq(
+                                fullName: _fullName.text.toString(),
+                                email: _email.text.toString(),
+                                password: _password.text.toString()));
+                        result.fold((l) {
+                          var snackbar = SnackBar(content: Text(l));
+                          ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                        }, (r) {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext content) =>
+                                      HomePage()),
+                              (route) => false);
+                        });
+                      },
+                      title: 'Creat Account'),
                 ],
               ),
             ),
@@ -72,6 +87,7 @@ final TextEditingController _email = TextEditingController();
 
   Widget _fullNameField(BuildContext context) {
     return TextField(
+      controller: _fullName,
       decoration: const InputDecoration(hintText: 'Full Name')
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );
@@ -79,6 +95,7 @@ final TextEditingController _email = TextEditingController();
 
   Widget _emailField(BuildContext context) {
     return TextField(
+      controller: _email,
       decoration: const InputDecoration(hintText: 'Enter Email')
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );
@@ -86,6 +103,7 @@ final TextEditingController _email = TextEditingController();
 
   Widget _passwordField(BuildContext context) {
     return TextField(
+      controller: _password,
       decoration: const InputDecoration(hintText: 'Password')
           .applyDefaults(Theme.of(context).inputDecorationTheme),
     );
@@ -105,7 +123,7 @@ final TextEditingController _email = TextEditingController();
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const Signin()),
+                  MaterialPageRoute(builder: (context) =>  Signin()),
                 );
               },
               child: const Text(
