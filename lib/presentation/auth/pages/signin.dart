@@ -65,7 +65,7 @@ class Signin extends StatelessWidget {
                           Navigator.pushAndRemoveUntil(
                               context,
                               MaterialPageRoute(
-                                  builder: (BuildContext content) =>
+                                  builder: (BuildContext context) =>
                                       HomePage()),
                               (route) => false);
                         });
