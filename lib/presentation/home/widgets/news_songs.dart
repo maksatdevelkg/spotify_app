@@ -6,6 +6,7 @@ import 'package:spotify_app/core/configs/theme/app_colors.dart';
 import 'package:spotify_app/domain/entities/song/song.dart';
 import 'package:spotify_app/presentation/home/bloc/news_songs_cubit.dart';
 import 'package:spotify_app/presentation/home/bloc/news_songs_state.dart';
+import 'package:spotify_app/presentation/song_player/pages/song_player.dart';
 
 class NewsSongs extends StatelessWidget {
   const NewsSongs({super.key});
@@ -43,61 +44,71 @@ class NewsSongs extends StatelessWidget {
           final fileName = Uri.encodeComponent(
               '${songs[index].artist} - ${songs[index].title}.jpg');
           final imageUrl =
-              '${AppURLs.firestorage}$fileName?${AppURLs.mediaAlt}';
-          return SizedBox(
-            width: 140,
-            child: Column(
-              children: [
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      image: DecorationImage(
-                          fit: BoxFit.cover, image: NetworkImage(imageUrl)),
-                    ),
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: Container(
-                        height: 30,
-                        width: 30,
-                        transform: Matrix4.translationValues(-10, 10, 0),
-                        // ignore: sort_child_properties_last
-                        child: Icon(
-                          Icons.play_arrow_rounded,
-                          color: context.isDarkMode
-                              ? const Color(0xff959595)
-                              : const Color(0xff555555),
-                        ),
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
+              '${AppURLs.coverFirestorage}$fileName?${AppURLs.mediaAlt}';
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (BuildContext context) =>
+                          SongPlayerPage(songEntity: songs[index])));
+            },
+            child: SizedBox(
+              width: 140,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(30),
+                        image: DecorationImage(
+                            fit: BoxFit.cover, image: NetworkImage(imageUrl)),
+                      ),
+                      child: Align(
+                        alignment: Alignment.bottomRight,
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          transform: Matrix4.translationValues(-10, 10, 0),
+                          child: Icon(
+                            Icons.play_arrow_rounded,
                             color: context.isDarkMode
-                                ? AppColors.darkGrey
-                                : const Color(0xffE6E6E6)),
+                                ? const Color(0xff959595)
+                                : const Color(0xff555555),
+                          ),
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: context.isDarkMode
+                                  ? AppColors.darkGrey
+                                  : const Color(0xffE6E6E6)),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    songs[index].title,
-                    style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+                  const SizedBox(
+                    height: 10,
                   ),
-                ),
-                const SizedBox(
-                  height: 5,
-                ),
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    songs[index].artist,
-                    style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      songs[index].title,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w600, fontSize: 16),
+                    ),
                   ),
-                )
-              ],
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      songs[index].artist,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w400, fontSize: 12),
+                    ),
+                  )
+                ],
+              ),
             ),
           );
         },

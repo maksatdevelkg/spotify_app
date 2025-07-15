@@ -44,6 +44,14 @@ dependencies:
   get_it: 
   dartz: ^0.10.1
   cloud_firestore:
+  just_audio: 
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/spotify_icons.png"
+
   
   
 
